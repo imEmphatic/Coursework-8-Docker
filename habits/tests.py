@@ -16,7 +16,7 @@ class HabitTestCase(APITestCase):
             is_nice_habit=False,
             frequency_number=1,
             frequency_unit="days",
-            reward="съесть банан",
+            reward="съесть яблоко",
             duration="120",
             is_public=True,
             user=self.user,
@@ -35,7 +35,7 @@ class HabitTestCase(APITestCase):
         data = {
             "place": "дом",
             "time": "20:40:00",
-            "action": "пропылесосить",
+            "action": "убраться",
             "is_pleasant": False,
             "frequency_number": 1,
             "frequency_unit": "days",

@@ -12,7 +12,7 @@ from habits.serialezers import HabitSerializer
 
 
 @method_decorator(
-    name="list", decorator=swagger_auto_schema(operation_description="cписок привычек")
+    name="list", decorator=swagger_auto_schema(operation_description="Cписок привычек")
 )
 class HabitViewSet(viewsets.ModelViewSet):
     serializer_class = HabitSerializer

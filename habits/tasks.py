@@ -34,4 +34,4 @@ def habit():
                 )
             habit_item.save()
         else:
-            print(f"У пользователя {habit_item.user} не указан тг")
+            print(f"У пользователя {habit_item.user} не указан ТГ")
