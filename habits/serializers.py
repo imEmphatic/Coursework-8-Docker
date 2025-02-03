@@ -11,7 +11,11 @@ from habits.validators import (
 
 
 class HabitSerializer(ModelSerializer):
+    """Сериализатор для модели Habit с встроенными валидаторами"""
+
     class Meta:
+        """Метаданные сериализатора Habit"""
+
         model = Habit
         fields = "__all__"
 

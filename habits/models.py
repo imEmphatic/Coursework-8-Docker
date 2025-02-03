@@ -6,11 +6,14 @@ NULLABLE = {"blank": True, "null": True}
 
 
 class Habit(models.Model):
+    """Модель привычки, содержащая информацию о её названии, месте, времени, действии и других параметрах"""
+
     FREQUENCY_UNITS = [
         ("minutes", "минуты"),
         ("hours", "часы"),
         ("days", "дни"),
     ]
+
     name = models.CharField(
         max_length=100, verbose_name="Название привычки", **NULLABLE
     )
@@ -39,9 +42,11 @@ class Habit(models.Model):
     is_public = models.BooleanField(default=True, verbose_name="Публичная")
 
     def __str__(self):
-        # Строковое отображение объекта
+        """Возвращает строковое представление привычки (её название)"""
         return self.name
 
     class Meta:
+        """Метаданные модели Habit"""
+
         verbose_name = "привычка"
         verbose_name_plural = "привычки"

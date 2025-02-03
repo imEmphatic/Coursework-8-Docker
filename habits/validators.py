@@ -4,11 +4,14 @@ from rest_framework.serializers import ValidationError
 
 
 class RewardValidator:
+    """Проверяет корректность соотношения двух полей (reward и related_habit)."""
+
     def __init__(self, field1, field2):
         self.field1 = field1
         self.field2 = field2
 
     def __call__(self, value):
+        """Проверяет значения полей. Если оба поля заполнены, выбрасывает ошибку."""
         tmp_val1 = dict(value).get(self.field1)
         tmp_val2 = dict(value).get(self.field2)
         if tmp_val1 and tmp_val2:
@@ -16,10 +19,13 @@ class RewardValidator:
 
 
 class RelatedHabitValidator:
+    """Проверяет, чтобы связанная привычка была приятной."""
+
     def __init__(self, field):
         self.field = field
 
     def __call__(self, value):
+        """Проверяет значение поля related_habit. Если оно указано, то проверяет is_pleasant."""
         tmp_val = dict(value).get(self.field)
         if tmp_val:
             if not tmp_val.is_pleasant:
@@ -27,50 +33,24 @@ class RelatedHabitValidator:
 
 
 class DurationTimeValidator:
+    """Проверяет продолжительность действия привычки (не более 120 секунд)."""
+
     def __init__(self, field):
         self.field = field
 
     def __call__(self, value):
+        """Проверяет значение поля продолжительности. Если продолжительность больше 120 секунд, выбрасывает ошибку."""
         tmp_val = dict(value).get(self.field)
         print(tmp_val)
         if tmp_val is not None and tmp_val > timedelta(seconds=120):
-            raise ValidationError("")
+            raise ValidationError("Продолжительность не может превышать 120 секунд")
 
 
 class PleasantHabitValidator:
+    """Проверяет, что у приятной привычки не может быть вознаграждения или связанной привычки."""
+
     def __init__(self, field):
         self.field = field
 
     def __call__(self, value):
-        tmp_val = dict(value).get(self.field)
-        if tmp_val:
-            our_value = dict(value)
-            if (
-                our_value.get("reward") is not None
-                or our_value.get("related_habit") is not None
-            ):
-                raise ValidationError(
-                    "У приятной привычки не может быть вознаграждения или связанной привычки"
-                )
-
-
-class RegularityValidator:
-    def __init__(self, field1, field2):
-        self.field1 = field1
-        self.field2 = field2
-
-    def __call__(self, value):
-        frequency_in_days = 0
-        num = dict(value).get(self.field1)
-        unit = dict(value).get(self.field2)
-
-        if num:
-            if unit == "minutes":
-                frequency_in_days = num / (60 * 24)
-            elif unit == "hours":
-                frequency_in_days = num / 24
-            elif unit == "days":
-                frequency_in_days = num
-
-        if frequency_in_days > 7:
-            raise ValidationError("Нельзя выполнять привычку реже, чем 1 раз в 7 дней")
+        """Проверяет, что у приятной привычки нет значения в полях reward или related_habit."""

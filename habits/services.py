@@ -5,6 +5,14 @@ from rest_framework import status
 
 
 def send_telegram(habit):
+    """Отправляет уведомление в Telegram о запланированной привычке.
+
+    Args:
+        habit (Habit): Экземпляр привычки, содержащий информацию о действии, времени и пользователе.
+
+    Отправляет сообщение в Telegram через API, используя токен бота из настроек.
+    Если запрос неуспешен, выводит ошибку в консоль.
+    """
     local_habit_time = localtime(habit.time)
     formatted_time = local_habit_time.strftime("%H:%M")
 
