@@ -1,39 +1,36 @@
-[project]
+[tool.poetry]
 name = "coursework-8-docker"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "Aleksei Prusikov",email = "imemphatic@yandex.ru"}
-]
+authors = ["Aleksei Prusikov <imemphatic@yandex.ru>"]
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-    "django (>=5.1.5,<6.0.0)",
-    "drf-yasg (>=1.21.8,<2.0.0)",
-    "rest-framework-simplejwt (>=0.0.2,<0.0.3)",
-    "django-cors-headers (>=4.6.0,<5.0.0)",
-    "djangorestframework (>=3.15.2,<4.0.0)",
-    "django-filter (>=24.3,<25.0)",
-    "celery (>=5.4.0,<6.0.0)",
-    "python-dotenv (>=1.0.1,<2.0.0)",
-    "djangorestframework-simplejwt (>=5.4.0,<6.0.0)",
-    "psycopg2-binary (>=2.9.10,<3.0.0)",
-    "pillow (>=11.1.0,<12.0.0)",
-    "eventlet (>=0.39.0,<0.40.0)",
-    "redis (>=5.2.1,<6.0.0)",
-    "stripe (>=11.5.0,<12.0.0)",
-    "setuptools (>=75.8.0,<76.0.0)",
-    "coverage (>=7.6.10,<8.0.0)",
-    "ipython (>=8.32.0,<9.0.0)",
-    "django-stubs (>=5.1.2,<6.0.0)"
-]
+license = "MIT"
 
+[tool.poetry.dependencies]
+python = ">=3.12"
+django = ">=5.1.5,<6.0.0"
+drf-yasg = ">=1.21.8,<2.0.0"
+rest-framework-simplejwt = ">=0.0.2,<0.0.3"
+django-cors-headers = ">=4.6.0,<5.0.0"
+djangorestframework = ">=3.15.2,<4.0.0"
+django-filter = ">=24.3,<25.0"
+celery = ">=5.4.0,<6.0.0"
+python-dotenv = ">=1.0.1,<2.0.0"
+djangorestframework-simplejwt = ">=5.4.0,<6.0.0"
+psycopg2-binary = ">=2.9.10,<3.0.0"
+pillow = ">=11.1.0,<12.0.0"
+eventlet = ">=0.39.0,<0.40.0"
+redis = ">=5.2.1,<6.0.0"
+stripe = ">=11.5.0,<12.0.0"
+setuptools = ">=75.8.0,<76.0.0"
+coverage = ">=7.6.10,<8.0.0"
+ipython = ">=8.32.0,<9.0.0"
+django-stubs = ">=5.1.2,<6.0.0"
+
+[tool.poetry.dev-dependencies]
+black = "^25.1.0"
+isort = "^6.0.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.group.dev.dependencies]
-black = "^25.1.0"
-isort = "^6.0.0"
-
